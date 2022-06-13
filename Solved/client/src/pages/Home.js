@@ -12,20 +12,21 @@ const Home = () => {
 
   return (
     <main>
-      <div className="flex-row justify-center">
+      <div className="flex-row justify-center fontFam">
         <div
-          className="col-12 col-md-10 mb-3 p-3"
+          className="col-12 col-md-10 mb-3 p-3 fontFam"
           style={{ border: '1px dotted #1a1a1a' }}
         >
           <MemoryForm />
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="col-12 col-md-8 mb-3 fontFam">
           {loading ? (
-            <div>Loading...</div>
+            <div className="fontFam">Loading...</div>
           ) : (
-            <MemoryList
+            <MemoryList 
               memories={memories}
-              title="Some Feed for Memory(s)..."
+              // title="Memory List"
+              className="fontFam"
             />
           )}
         </div>

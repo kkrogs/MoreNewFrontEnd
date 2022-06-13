@@ -20,7 +20,7 @@ const MemoryList = ({
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                 <Link
-                  className="text-light"
+                  className="text-light fontFam"
                   to={`/profiles/${memory.memoryAuthor}`}
                 >
                   {memory.memoryAuthor} <br />

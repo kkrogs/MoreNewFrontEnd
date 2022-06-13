@@ -62,7 +62,7 @@ const MemoryForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'memoryText' && value.length <= 280) {
+    if (name === 'memoryText' && value.length <= 500) {
       setMemoryText(value);
       setCharacterCount(value.length);
     }
@@ -70,16 +70,16 @@ const MemoryForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3 className='fontFam'>What's on your mind?</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
+              characterCount === 500 || error ? 'text-danger' : ''
             }`}
           >
-            Character Count: {characterCount}/280
+            {/* Character Count: {characterCount}/280 */}
           </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
@@ -88,7 +88,7 @@ const MemoryForm = () => {
             <div className="col-12 col-lg-9">
               <textarea
                 name="memoryText"
-                placeholder="Here's a new memory..."
+                placeholder="Add Memory Here"
                 value={memoryText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
@@ -117,7 +117,7 @@ const MemoryForm = () => {
         </div>
              
               {/* end of new button */}
-           
+              
            
             </div>
             {error && (
