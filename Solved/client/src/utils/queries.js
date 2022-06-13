@@ -6,32 +6,32 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      memories {
         _id
-        thoughtText
+        memoryText
         createdAt
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_MEMORIES = gql`
+  query getMemories {
+    memories {
       _id
-      thoughtText
-      thoughtAuthor
+      memoryText
+      memoryAuthor
       createdAt
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_SINGLE_MEMORY = gql`
+  query getSingleMemory($memoryId: ID!) {
+    memory(memoryId: $memoryId) {
       _id
-      thoughtText
-      thoughtAuthor
+      memoryText
+      memoryAuthor
       createdAt
       comments {
         _id
@@ -49,10 +49,10 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      memories {
         _id
-        thoughtText
-        thoughtAuthor
+        memoryText
+        memoryAuthor
         createdAt
       }
     }

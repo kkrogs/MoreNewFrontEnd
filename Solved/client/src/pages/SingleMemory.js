@@ -11,7 +11,7 @@ import { QUERY_SINGLE_MEMORY } from '../utils/queries';
 
 const SingleMemory = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { MemoryId } = useParams();
+  const { memoryId } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_MEMORY, {
     // pass URL parameter

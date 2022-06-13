@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_MEMORY } from '../../utils/mutations';
+import { QUERY_MEMORIES, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
+const MemoryForm = () => {
+  const [memoryText, setMemoryText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-    update(cache, { data: { addThought } }) {
+  const [addMemory, { error }] = useMutation(ADD_MEMORY, {
+    update(cache, { data: { addMemory } }) {
       try {
-        const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
+        const { memories } = cache.readQuery({ query: QUERY_MEMORIES });
 
         cache.writeQuery({
-          query: QUERY_THOUGHTS,
-          data: { thoughts: [addThought, ...thoughts] },
+          query: QUERY_MEMORIES,
+          data: { memories: [addMemory, ...memories] },
         });
       } catch (e) {
         console.error(e);
@@ -29,7 +29,7 @@ const ThoughtForm = () => {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+        data: { me: { ...me, memories: [...me.memories, addMemory] } },
       });
     },
   });
@@ -38,14 +38,14 @@ const ThoughtForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addThought({
+      const { data } = await addMemory({
         variables: {
-          thoughtText,
-          thoughtAuthor: Auth.getProfile().data.username,
+          memoryText,
+          memoryAuthor: Auth.getProfile().data.username,
         },
       });
 
-      setThoughtText('');
+      setMemoryText('');
     } catch (err) {
       console.error(err);
     }
@@ -54,8 +54,8 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
-      setThoughtText(value);
+    if (name === 'memoryText' && value.length <= 280) {
+      setMemoryText(value);
       setCharacterCount(value.length);
     }
   };
@@ -79,9 +79,9 @@ const ThoughtForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
-                placeholder="Here's a new thought..."
-                value={thoughtText}
+                name="memoryText"
+                placeholder="Here's a new memory..."
+                value={memoryText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -90,7 +90,7 @@ const ThoughtForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Thought
+                Add Memory
               </button>
             </div>
             {error && (
@@ -102,7 +102,7 @@ const ThoughtForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{' '}
+          You need to be logged in to share your memories. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
@@ -110,4 +110,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default MemoryForm;

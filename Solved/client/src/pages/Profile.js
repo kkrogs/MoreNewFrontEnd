@@ -43,7 +43,7 @@ const Profile = () => {
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
-          <MemroyList
+          <MemoryList
             memories={user.memories}
             title={`${user.username}'s memories...`}
             showTitle={false}
