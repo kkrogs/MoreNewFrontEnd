@@ -17,7 +17,7 @@ const MemoryList = ({
       {memories &&
         memories.map((memory) => (
           <div key={memory._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+            <h4 className="card-header headerCard text-light p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-light fontFam"
@@ -40,7 +40,7 @@ const MemoryList = ({
               <p>{memory.memoryText}</p>
             </div>
             <Link
-              className="btn btn-primary btn-block btn-squared"
+              className="btn btn-block btn-squared headerColor text-light"
               to={`/memories/${memory._id}`}
             >
               Join the discussion on this memory.

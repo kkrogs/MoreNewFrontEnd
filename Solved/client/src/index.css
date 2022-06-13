@@ -920,7 +920,7 @@ a:hover {
 
 /* BACKGROUND UTILS */
 .bg-primary {
-  background-color: #2d3e50 !important;
+  background-color: #FCFCEB !important;
 }
 
 .bg-info {
@@ -932,7 +932,7 @@ a:hover {
 }
 
 .bg-light {
-  background-color: #d9e9e8 !important;
+  background-color: #eaecf0 !important;
 }
 
 .bg-dark {
@@ -1763,7 +1763,7 @@ label form [type='radio'] {
 }
 
 .headerColor {
-background-color: #5d0cff;
+background-color: #0c34ff !important;
 font-family: Arial, Helvetica, sans-serif;
 
 }
@@ -1772,3 +1772,18 @@ font-family: Arial, Helvetica, sans-serif;
  font-family: Arial, Helvetica, sans-serif;
   
   }
+
+.lightYellow {
+background-color: #FCFCEB;
+
+}
+
+.footerCardColor {
+background-color: #96a6f5 !important;
+
+}
+
+.headerCard {
+background-color: #ec5700 !important;
+
+}
