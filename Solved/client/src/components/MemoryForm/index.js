@@ -132,6 +132,7 @@ const MemoryForm = () => {
           You need to be logged in to share your memories. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
+
       )}
     </div>
   );
