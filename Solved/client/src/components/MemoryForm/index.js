@@ -8,6 +8,14 @@ import { QUERY_MEMORIES, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const MemoryForm = () => {
+  // const [input, setInput] = useState('');
+
+  // added here to define emotions, setEmotions, and emotions level
+  let [emotions, setEmotions] = useState('');
+  const emotionsLevel = ['Fear', 'Joy', 'Anger', 'Disgust', 'Sadness']
+  // end of change
+
+ 
   const [memoryText, setMemoryText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -92,6 +100,25 @@ const MemoryForm = () => {
               <button className="btn btn-primary btn-block py-3" type="submit">
                 Add Memory
               </button>
+
+              {/* new dropdown button for emotions */}
+             
+              <div className="dropdown">
+          <button className={`dropbtn ${emotions}`}>
+            {emotions || 'Joy'}
+          </button>
+          <div className="dropdown-content">
+            <p onClick={() => setEmotions(emotionsLevel[0])}>Fear</p>
+            <p onClick={() => setEmotions(emotionsLevel[1])}>Joy</p>
+            <p onClick={() => setEmotions(emotionsLevel[2])}>Anger</p>
+            <p onClick={() => setEmotions(emotionsLevel[3])}>Disgust</p>
+            <p onClick={() => setEmotions(emotionsLevel[4])}>Sadness</p>
+          </div>
+        </div>
+             
+              {/* end of new button */}
+           
+           
             </div>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
